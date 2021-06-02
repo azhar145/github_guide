@@ -1,1 +1,4 @@
 python3 pip -m install pandas
+python3 pip -m install https://github.com/ranaroussi/yfinance
+pip-review --interactive
+pip install --upgrade -r requirements.txt
