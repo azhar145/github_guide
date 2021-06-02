@@ -1,4 +1,4 @@
-python3 pip -m install pandas
-python3 pip -m install https://github.com/ranaroussi/yfinance
-pip-review --interactive
-pip install --upgrade -r requirements.txt
+numpy==1.15.3
+#oauthlib==2.1.0
+pandas==0.23.3
+~                 
