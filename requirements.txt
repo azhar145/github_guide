@@ -1,5 +1,9 @@
-calendar
-yfinance
-textwrap
-yahoo_fin
-pandas     
+yfinance>=0.1.59
+yahoo_fin>=0.8.6
+pandas>=0.24.0
+numpy>=1.16.5
+requests>=2.21
+multitasking>=0.0.7
+lxml>=4.5.1
+Jinja2
+               
