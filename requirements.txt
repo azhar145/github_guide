@@ -1,4 +1,5 @@
-numpy==1.15.3
-#oauthlib==2.1.0
-pandas==0.23.3
-~                 
+calendar
+yfinance
+textwrap
+yahoo_fin
+pandas     
