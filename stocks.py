@@ -41,7 +41,7 @@ df['ticker']=tickers_list
 #df['ticker']=tickers_list[0]
 df['up_down']=df['Close']-df['Open']
 #df['z']=calendar.day_name[df['Date'].weekday()]
-df['day']=df['Date'].dt.weekday_name
+df['day']=df['Date'].dt.day_name()
 df['Datea']=df['Date'].dt.date
 
 
