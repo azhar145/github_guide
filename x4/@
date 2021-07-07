@@ -1,0 +1,124 @@
+import plotly.graph_objs as go
+import pandas as pd
+import yfinance as yf
+import numpy as np
+from datetime import time
+from numerize import numerize
+
+pd.options.display.max_rows=9999
+pd.options.display.max_columns=26
+pd.set_option("display.max_columns", 100)
+pd.set_option('display.width', 1000)
+
+
+
+def ff(g):
+    import yfinance as yf
+    import pandas as pd
+    import numpy as np
+    import datetime
+    from datetime import time
+    from numerize import numerize
+    df=pd.DataFrame()
+    print('   ','inside def ',yf.download(g, start='2021-07-01', end='2021-07-21'))
+#    print(yf.Ticker(g))
+#    df=yf.download(g, start="2021-03-01", end="2021-04-30")
+#    print(df)
+#    start = datetime.datetime(2018,1,1)
+#    end = datetime.datetime(2021,7,17)
+#    df = yf.download(g, start=start, end=end)
+#    return(df)
+
+#    df = yf.download(g, period='2d',prepost = True)
+#    df.reset_index(inplace=True)
+#    print(g,'\n','    ',df.T)
+#    df.reset_index(inplace=True)
+#    print('\n','***********************************','\n')    
+#    return(df)
+    '''
+    df.reset_index(inplace=True)
+    df['ticker']=g
+    df2=pd.concat([df2,df],axis=0)
+    df2['Close']=df2['Close'].round(2)
+    df2['Open']=df2['Open'].round(2)
+    df2['Low']=df2['Low'].round(2)
+    df2['High']=df2['High'].round(2)
+    df2['Adj Close']=df2['Adj Close'].round(2)
+    df2=df2.drop_duplicates(subset=['Date','ticker'], keep='first', inplace=False, ignore_index=False)
+
+    print(df2)
+    '''
+###====================================
+i=0
+df=pd.DataFrame()
+df2=pd.DataFrame()
+f = open('/home/ec2-user/environment/x3/stocks/x4/lista.txt','r')
+for p in f.read().strip().split('\n'):
+
+    i=i+1
+    if len(p) > 0:
+        df=yf.download(p, period='1d')
+        df.reset_index(inplace=True)
+        df['ticker']=p
+        df=df.drop_duplicates(subset=['Date','ticker'], keep='first', inplace=False, ignore_index=False)
+        df2=df2.append(df)
+        df2['Open']=df2['Open'].round(2)
+        df2['Close']=df2['Close'].round(2)
+        df2['Low']=df2['Low'].round(2)
+        df2['High']=df2['High'].round(2)
+        df2['Adj Close']=df2['Adj Close'].round(2)
+        df2['Volume']=(df2['Volume'][0])
+#        print(df)
+#        print(yf.download(p, period='1d'))
+#        print(yf.download(p, start='2021-07-01', end='2021-07-21'),p)
+f.close()
+#df2
+#df2.set_index('Date')
+#df2['Volumen']=''
+#for x in df2.index:
+#    print(x)
+#    print(len(df2['Volume'].loc[x]),'   ',df2['Volume'].loc[x]) 
+#    print(type(df2['Volume']),'   ', df2['Volume'])
+#    if df2['Volume'][0] > 0:
+#    if df2['Volume'].str.isnumeric()==True:  
+#    if len(df2['Volume'].loc[x]) < 1:
+#        df2['Volume'].loc[x]=numerize.numerize((df2['Volume'].loc[x]).item())
+#        df2['m']='m'
+#        print('kkkk')
+#print(df2)
+#print(df2)
+df2.set_index('Date')
+#print(df2)
+df3=pd.DataFrame()
+df3=df2
+df3['bx']=''
+print(df3.shape)
+df3=df3[2:]
+for x in df3.index:
+#    print(df2.loc[x])
+#    df2['bx'].loc[x]=df2['bx'].loc[x].append(x)
+#    if len(str(df2['Volume'].loc[x])) == 0:
+#        print(df2.loc[x])
+#     df3['bx'].loc[x]=df3['bx'].loc[x].append(df3['Low'].loc[x])
+#    df3['bx'].loc[x].append(df3['ticker'].loc[x],ignore_index=True)
+#    print('\n\n',df3['Volume'].loc[x],'     ',len(df3['Volume'].loc[x]))
+    df3['Volume'].loc[x]=df3['Volume'].loc[x]
+    df3['bx'].loc[x]=df3['Volume'].loc[x]
+#    print(x,'       ',df3['bx'].loc[x])
+
+    df3['bx'].loc[x]=numerize.numerize((df3['Volume'].loc[x]).item())
+
+    
+#    if len(df3['Volume'].loc[x]) < 1:
+#        df3['bx'].loc[x]=numerize.numerize(np.float32(df3['Volume'].loc[x]).item())
+#    else:
+#        pass
+#    df3['bx'].loc[x]=numerize.numerize(df3['Volume'].loc[x]).item()
+#        df2['Volumen']=df2.append(df2['Volumen'])
+#        df2['bx'].loc[x]=df2.loc[x].append(df2['Volume'].loc[x])
+#        print(df2['bx'].loc[x])
+#print(df3.shape)
+print(df3)
+
+
+
