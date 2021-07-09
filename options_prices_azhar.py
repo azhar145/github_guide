@@ -6,6 +6,7 @@ import textwrap
 from yahoo_fin import news as g
 import html5lib
 
+from numerize import numerize 
 
 
 pd.options.display.max_columns = 50
@@ -22,13 +23,24 @@ pd.set_option("display.expand_frame_repr", False)
 
 
 dd_most_active=pd.DataFrame(f.get_day_most_active())
+
+#dd_most_active['Volume']=numerize.numerize(dd_most_active['Volume'])
+
 dd_most_active['%_Vol_delta']=100*(dd_most_active['Volume']/dd_most_active['Avg Vol (3 month)'])-100
 dd_most_active['%_Vol_delta']=dd_most_active['%_Vol_delta'].round(2)
 print('---------------  Most Active -----------------------')
 #print(dd_most_active.columns)
+#print(dd_most_active['Volume'])
+########################################################
+#dd_most_active['Volume']=dd_most_active['Volume']*100000000
+a = numerize.numerize(dd_most_active['Volume'][0])
+#print(a)
+#############################################################
+#dd_most_active['Volume']=numerize.numerize(dd_most_active['Volume']).any()
 print(dd_most_active.sort_values(by=['Volume'], ascending=False))
 print('\n\n')
 
+dd_most_active['Volume']=dd_most_active['Volume']*100000000
 
 print('---------------------- Day Gainers ---------------------')        
 dd_day_gainers=pd.DataFrame(f.get_day_gainers())
