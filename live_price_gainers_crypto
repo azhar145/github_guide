@@ -1,0 +1,23 @@
+# import stock_info module from yahoo_fin
+from yahoo_fin import stock_info as si
+
+# get live price of Apple
+si.get_live_price("aapl")
+ 
+# or Amazon
+si.get_live_price("amzn")
+ 
+# or any other ticker
+si.get_live_price(ticker)
+
+# get most active stocks on the day
+si.get_day_most_active()
+ 
+# get biggest gainers
+si.get_day_gainers()
+ 
+# get worst performers
+si.get_day_losers()
+
+#get crypto
+si.get_top_crypto()
